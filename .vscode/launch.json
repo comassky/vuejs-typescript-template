@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Firefox",
+            "url": "http://localhost:8081",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:8081",
+            "webRoot": "${workspaceFolder}"
+        }, 
+
+    ]
+}

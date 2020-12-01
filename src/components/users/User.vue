@@ -18,28 +18,28 @@
 </template>
 
 <script lang="ts">
-import { UserInterface } from '@/Interfaces/UserInterface'
-import Component from 'vue-class-component'
-import { Prop, Vue } from 'vue-property-decorator'
-import UserApiServices from '@/services/UserApiServices'
+import { UserInterface } from '@/Interfaces/UserInterface';
+import Component from 'vue-class-component';
+import { Prop, Vue } from 'vue-property-decorator';
+import UserApiServices from '@/services/UserApiServices';
 
 @Component
 export default class User extends Vue {
   @Prop()
-  readonly userId!: number
+  readonly userId!: number;
 
-  private dialog: boolean
-  private user: UserInterface
+  private dialog: boolean;
+  private user: UserInterface;
 
   public constructor() {
-    super()
-    this.user = {} as UserInterface
-    this.dialog = false
+    super();
+    this.user = {} as UserInterface;
+    this.dialog = false;
   }
 
   public async searchUser() {
-    this.user = await UserApiServices.getOneUser(this.userId)
-    this.dialog = true
+    this.user = await UserApiServices.getOneUser(this.userId);
+    this.dialog = true;
   }
 }
 </script>

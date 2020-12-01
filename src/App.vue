@@ -35,21 +35,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component'
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
 @Component({
   components: {}
 })
 export default class App extends Vue {
-  private items: {}[]
+  private items: {}[];
 
   public constructor() {
-    super()
+    super();
     this.items = [
       { title: 'Posts', icon: 'mdi-email', to: '/posts' },
       { title: 'Users', icon: 'mdi-account', to: '/users' }
-    ]
+    ];
   }
 }
 </script>

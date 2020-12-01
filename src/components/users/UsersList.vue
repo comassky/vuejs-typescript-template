@@ -26,47 +26,47 @@
 </template>
 
 <script lang="ts">
-import Component from 'vue-class-component'
-import { Vue } from 'vue-property-decorator'
-import UserApiService from '@/services/UserApiServices'
-import { UserInterface } from '@/Interfaces/UserInterface'
-import AlbumsApiService from '@/services/AlbumsApiServices'
-import { AlbumInterface } from '@/Interfaces/AlbumInterface'
-import PhotosApiServices from '@/services/PhotosApiServices'
-import { PhotoInterface } from '@/Interfaces/PhotoInterface'
+import Component from 'vue-class-component';
+import { Vue } from 'vue-property-decorator';
+import UserApiService from '@/services/UserApiServices';
+import { UserInterface } from '@/Interfaces/UserInterface';
+import AlbumsApiService from '@/services/AlbumsApiServices';
+import { AlbumInterface } from '@/Interfaces/AlbumInterface';
+import PhotosApiServices from '@/services/PhotosApiServices';
+import { PhotoInterface } from '@/Interfaces/PhotoInterface';
 
 @Component({ components: {} })
 export default class UsersList extends Vue {
-  private listeUsers: { user: UserInterface; nombrePhoto: number }[]
+  private listeUsers: { user: UserInterface; nombrePhoto: number }[];
 
   constructor() {
-    super()
-    this.listeUsers = []
+    super();
+    this.listeUsers = [];
   }
 
   async mounted() {
-    const users = await UserApiService.getAllUsers()
+    const users = await UserApiService.getAllUsers();
     users.forEach((user) => {
       this.listeUsers.push({
         user: user,
         nombrePhoto: 0
-      })
-      this.recuperationNombrePhotosByUser(user.id)
-    })
+      });
+      this.recuperationNombrePhotosByUser(user.id);
+    });
   }
 
   private async recuperationNombrePhotosByUser(idUser: number) {
     // Récupération des albums d'un user
-    const albums: AlbumInterface[] = await AlbumsApiService.getAllAlbumsOfUser(idUser)
+    const albums: AlbumInterface[] = await AlbumsApiService.getAllAlbumsOfUser(idUser);
 
     // On cherche le user
-    const index = this.listeUsers.findIndex((user) => user.user.id === idUser)
+    const index = this.listeUsers.findIndex((user) => user.user.id === idUser);
 
     // On récupère les photos pour chaque albums
     albums.forEach(async (album) => {
-      const photos: PhotoInterface[] = await PhotosApiServices.getAllPhotosOfAlbum(album.id)
-      this.listeUsers[index].nombrePhoto += photos.length
-    })
+      const photos: PhotoInterface[] = await PhotosApiServices.getAllPhotosOfAlbum(album.id);
+      this.listeUsers[index].nombrePhoto += photos.length;
+    });
   }
 }
 </script>

@@ -28,23 +28,23 @@
 </template>
 
 <script lang="ts">
-import { PostInterface } from '@/Interfaces/PostInterface'
-import Component from 'vue-class-component'
-import { Prop, Vue } from 'vue-property-decorator'
-import PostApiService from '@/services/PostApiServices'
-import User from '@/components/users/User.vue'
+import { PostInterface } from '@/Interfaces/PostInterface';
+import Component from 'vue-class-component';
+import { Vue } from 'vue-property-decorator';
+import PostApiService from '@/services/PostApiServices';
+import User from '@/components/users/User.vue';
 
 @Component({ components: { User } })
 export default class PostsList extends Vue {
-  private listePosts: PostInterface[]
+  private listePosts: PostInterface[];
 
   constructor() {
-    super()
-    this.listePosts = []
+    super();
+    this.listePosts = [];
   }
 
   async mounted() {
-    this.listePosts = await PostApiService.getAllPosts()
+    this.listePosts = await PostApiService.getAllPosts();
   }
 }
 </script>

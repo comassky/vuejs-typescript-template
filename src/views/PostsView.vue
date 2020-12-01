@@ -5,9 +5,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import PostsList from '@/components/posts/PostsList.vue'
-import { component } from 'vue/types/umd'
+import { Component, Vue } from 'vue-property-decorator';
+import PostsList from '@/components/posts/PostsList.vue';
 
 @Component({ components: { PostsList } })
 export default class PostsView extends Vue {}
