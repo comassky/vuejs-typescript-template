@@ -1,14 +1,20 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import PostsView from '@/views/PostsView.vue'
+import UsersView from '@/views/UsersView.vue'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Posts',
     component: PostsView
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: UsersView
   },
   {
     path: '/about',
