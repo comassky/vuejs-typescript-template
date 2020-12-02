@@ -1,12 +1,17 @@
 <template>
   <v-container>
-    <h1>ALBUMS</h1>
+    <AlbumsList />
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import AlbumsList from '@/components/albums/AlbumsList.vue';
 
-@Component
+@Component({
+  components: {
+    AlbumsList
+  }
+})
 export default class AlbumsView extends Vue {}
 </script>

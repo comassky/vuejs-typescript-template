@@ -9,4 +9,9 @@ export default abstract class AlbumsApiServices {
         const response = await this.rest.get<AlbumInterface[]>('https://jsonplaceholder.typicode.com/users/' + userId + '/albums');
         return response.data;
     }
+
+    static async getAllAlbums(): Promise<AlbumInterface[]> {
+        const response = await this.rest.get<AlbumInterface[]>('https://jsonplaceholder.typicode.com/albums')
+        return response.data;
+    }
 }
